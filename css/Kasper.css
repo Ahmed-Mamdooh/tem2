@@ -265,7 +265,14 @@ header nav .form i {
     display: flex;
     justify-content: flex-end;
     position: absolute;
+    min-height: 300px;
+    transition: .3s;
+    opacity: 0;
+}
+
+.landing .text.active {
     opacity: 1;
+    z-index: 1;
 }
 
 .landing .text .content {
@@ -344,12 +351,16 @@ header nav .form i {
     border-left-color: transparent;
     top: 50%;
     transition: .3s;
+    z-index: 2;
 }
 
-.landing button.right:hover,
-.landing button.left:hover {
-    border-bottom-color: var(--main-color);
-    border-right-color: var(--main-color);
+@media (min-width: 768px) {
+
+    .landing button.right:hover,
+    .landing button.left:hover {
+        border-bottom-color: var(--main-color);
+        border-right-color: var(--main-color);
+    }
 }
 
 .landing button.right {
@@ -360,6 +371,10 @@ header nav .form i {
 .landing button.left {
     transform: rotate(135deg) translateY(-50%);
     left: 30px;
+}
+
+.landing button.disabled {
+    border-color: transparent;
 }
 
 .landing .bullets {
@@ -1309,3 +1324,20 @@ header nav .form i {
 }
 
 /* end footer */
+
+@keyframes changing-border-color {
+    0% {
+        border-bottom-color: white;
+        border-right-color: white;
+    }
+
+    50% {
+        border-bottom-color: var(--main-color);
+        border-right-color: var(--main-color);
+    }
+
+    100% {
+        border-bottom-color: white;
+        border-right-color: white;
+    }
+}
