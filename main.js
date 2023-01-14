@@ -1,3 +1,34 @@
+// scroll to top
+// let scrollButton = document.querySelector(".scroll-to-top");
+// let numsPlace = document.querySelector(".stats");
+// console.log(numsPlace.offsetTop);
+// window.onscroll = function () {
+//   if (numsPlace.offsetTop < window.scrollY) {
+//     console.log("reached");
+//   }
+// };
+
+let nums = document.querySelectorAll(".stats .box .number");
+nums.forEach((num) => {
+  countingFromOneToGoal(num);
+});
+function countingFromOneToGoal(element) {
+  let goal = element.dataset.finalnumber;
+  console.log(2000 / goal);
+  // console.log(goal)
+  let counter = setInterval(() => {
+    element.textContent++;
+    if (element.textContent == goal) {
+      clearInterval(counter);
+    }
+  }, 1500 / goal);
+}
+console.log();
+
+//
+//
+//
+console.log();
 //Menu Coding
 // Elements
 let toggle = document.querySelector(".toggle-menu");
@@ -33,6 +64,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
   };
 }
 // fixing the rezizing problem
+// Problem 1
 window.onresize = function () {
   if (window.matchMedia("(min-width: 768px)").matches) {
     theLinksUl.style.cssText =
@@ -40,8 +72,11 @@ window.onresize = function () {
   } else if (window.matchMedia("(max-width: 767px)").matches) {
     theLinksUl.style.display = "none";
   }
-  console.log("resized");
 };
+// Problem 2
+if (window.matchMedia("(max-width: 767px)").matches) {
+  theLinksUl.style.cssText = "display: none";
+}
 
 //Text Coding
 let texts = Array.from(document.querySelectorAll(".landing .text"));
