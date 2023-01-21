@@ -1,5 +1,18 @@
 // scroll to top
-// let scrollButton = document.querySelector(".scroll-to-top");
+let scrollButton = document.querySelector(".scroll-to-top");
+scrollButton.onclick = function () {
+  window.scroll({
+    top: 0,
+    behaviour: "smooth",
+  });
+};
+addEventListener("scroll", function () {
+  if (window.scrollY >= 600) {
+    scrollButton.style.display = "block";
+  } else {
+    scrollButton.style.display = "none";
+  }
+});
 // let numsPlace = document.querySelector(".stats");
 // console.log(numsPlace.offsetTop);
 // window.onscroll = function () {
@@ -9,13 +22,36 @@
 // };
 
 let nums = document.querySelectorAll(".stats .box .number");
-nums.forEach((num) => {
-  countingFromOneToGoal(num);
+let statsContainer = document.querySelector(".stats");
+let isStarted;
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= statsContainer.offsetTop - 300) {
+    if (isStarted === undefined) {
+      nums.forEach((num) => {
+        countingFromOneToGoal(num);
+        isStarted = "done";
+      });
+    }
+  }
+});
+let progressChartContainers = document.querySelector(".skills");
+let progressChartElements = document.querySelectorAll(".skills .prog span");
+let isStarted2;
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= progressChartContainers.offsetTop - 300) {
+    if (isStarted2 === undefined) {
+      progressChartElements.forEach((progressChartElement) => {
+        console.log(progressChartElement);
+        console.log(progressChartElement.dataset);
+        progressChartElement.style.width =
+          progressChartElement.dataset.progress;
+        isStarted2 = "done";
+      });
+    }
+  }
 });
 function countingFromOneToGoal(element) {
   let goal = element.dataset.finalnumber;
-  console.log(2000 / goal);
-  // console.log(goal)
   let counter = setInterval(() => {
     element.textContent++;
     if (element.textContent == goal) {
@@ -23,12 +59,10 @@ function countingFromOneToGoal(element) {
     }
   }, 1500 / goal);
 }
-console.log();
 
 //
 //
 //
-console.log();
 //Menu Coding
 // Elements
 let toggle = document.querySelector(".toggle-menu");
@@ -143,3 +177,23 @@ function nextSlide() {
     theChecker();
   }
 }
+// THIS IS NOT ITS PLACE
+/*
+function countingFromOneToGoal(element) {
+  let goal = element.dataset.finalnumber;
+  let done = false;
+  if (element.textContent !== goal) {
+    let counter = setInterval(() => {
+      element.textContent++;
+      clearInterval(counter);
+    }, 1500 / goal);
+  }
+  if (element.textContent === goal) {
+    done = true;
+  }
+  if (!done) {
+    window.requestAnimationFrame(countingFromOneToGoal);
+  }
+}
+
+*/

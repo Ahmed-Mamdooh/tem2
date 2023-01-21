@@ -229,6 +229,8 @@ header nav .form i {
     background-color: var(--main-color);
     border-radius: 3px;
     cursor: pointer;
+    display: none;
+    transition: .3s;
 }
 
 .scroll-to-top::before {
@@ -597,22 +599,6 @@ header nav .form i {
     padding-bottom: var(--sec-padd)
 }
 
-.portfolio .shuffle {
-    display: flex;
-    justify-content: center;
-
-}
-
-.portfolio .shuffle li {
-    padding: 10px;
-    text-transform: capitalize;
-}
-
-.portfolio .shuffle li.active {
-    background-color: var(--main-color);
-    color: white
-}
-
 .portfolio .imgs-container {
     display: flex;
     flex-wrap: wrap;
@@ -943,26 +929,6 @@ header nav .form i {
     margin-bottom: 10px
 }
 
-.testimonials .bullets {
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-}
-
-.testimonials .bullets li {
-    width: 14px;
-    height: 14px;
-    border: 1px solid #aaa;
-    margin-right: 10px;
-    border-radius: 50%
-}
-
-.testimonials .bullets li.active {
-    border-color: var(--main-color);
-    background-color: var(--main-color)
-}
-
 .our-skills .skills .prog-holder {
     margin-bottom: 40px;
 }
@@ -983,6 +949,7 @@ header nav .form i {
     display: block;
     background-color: var(--main-color);
     height: 100%;
+    transition: 1.3s;
 }
 
 .our-skills .skills .prog-holder span::before {
